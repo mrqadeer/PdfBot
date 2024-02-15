@@ -1,8 +1,8 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 st.set_page_config("PDF Bot",page_icon=":book:")
-from utils.credential import credetial
-
+from utils.credential import credential
+from utils.pdfbot import pdfbot
 class MyApp:
     """
     This class is main class of this application
@@ -24,7 +24,7 @@ class MyApp:
             app = option_menu(
                 menu_title='PDF Bot',
                 options=['Credentials', 'Chat'],
-                icons=['house-heart', 'data'],
+                icons=['gear', 'chat'],
                 menu_icon='chat-text-fill',
                 default_index=0,
 
@@ -37,7 +37,9 @@ class MyApp:
                     "nav-link-selected": {"background-color": "#02ab21"}, })
       
         if app=="Credentials":
-            credetial()
+            credential()
+        if app=='Chat':
+            pdfbot()
             
 
 
