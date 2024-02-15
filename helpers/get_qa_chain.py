@@ -1,4 +1,4 @@
-from langchain_google_genai import ChatGoogleGenerativeAI
+
 from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain

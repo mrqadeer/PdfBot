@@ -1,4 +1,4 @@
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
 import streamlit as st 
