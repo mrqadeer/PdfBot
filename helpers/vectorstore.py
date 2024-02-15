@@ -1,5 +1,5 @@
 
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings,OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 import streamlit as st 
 
@@ -14,7 +14,8 @@ class VectorStore:
     def embeddings(self,files,text_chunks):
         os.makedirs("embeddings",exist_ok=True)
        
-        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+        api_key=st.session_state.apikey
+        embeddings = OpenAIEmbeddings(api_key=api_key)
         # creating the Vectore Store using Facebook AI Semantic search
         
         file_name=helper.get_file_name(files)
