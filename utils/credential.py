@@ -19,7 +19,7 @@ def credential():
         st.subheader(f"Welcome {user_name}")
         st.session_state.username=user_name
         st.session_state.apikey=api_key
-        # helper.setup_api()
+        
         st.session_state.credentials=True
     else:
         st.warning("Fill the fields correctly.")

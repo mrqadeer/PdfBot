@@ -2,9 +2,9 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
 import streamlit as st 
-import google.generativeai as genai
+
 import os,pickle
-from dotenv import load_dotenv
+
 from helpers.helpers import Helper
 helper=Helper()
 
