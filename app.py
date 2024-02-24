@@ -20,6 +20,7 @@ class MyApp:
         """
         This method run the streamlit app
         """
+        
         with st.sidebar:
             app = option_menu(
                 menu_title='PDF Bot',
@@ -35,6 +36,7 @@ class MyApp:
                                  "text-align": "left", "margin": "0px",
                                  "--hover-color": "magenta"},
                     "nav-link-selected": {"background-color": "#02ab21"}, })
+            
       
         if app=="Credentials":
             credential()
