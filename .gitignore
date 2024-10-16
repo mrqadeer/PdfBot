@@ -1,3 +1,6 @@
 __pycache__/*
 __pycache__/*
 pdfbot
+env
+.env
+helpers\__pycache__

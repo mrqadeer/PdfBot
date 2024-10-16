@@ -10,6 +10,15 @@ pdfhandler=PdfHandler()
 vectorstore=VectorStore()
 
 def pdfbot():
+    """
+    This function creates a chatbot that can answer questions about uploaded PDF files using the conversation memory chain.
+    
+    It first checks if the user has logged in and has uploaded a PDF file. If so, it creates a conversation memory chain using the uploaded PDF file and the vector store.
+    
+    Then, it shows a chat input box where the user can ask questions about the uploaded PDF file. The chatbot will respond with an answer.
+    
+    If the user has not logged in, it shows an error message and stops the app.
+    """
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
     if "chat_history" not in st.session_state:
@@ -18,7 +27,7 @@ def pdfbot():
         st.session_state.done=False
     st.header("Chat with books")
     if st.session_state.credentials:
-        with st.expander("Uploads files"):
+        with st.expander("Uploads files",expanded=True):
             uploaded_file=st.file_uploader("Files",type='pdf')
             if uploaded_file is not None:
                 chat=st.button("Chat")
@@ -28,7 +37,7 @@ def pdfbot():
                         st.write(f"{uploaded_file.name} loaded successfully.")
                         text=pdfhandler.get_pdf_text(uploaded_file)
                         chunks=pdfhandler.get_text_chunks(text)
-                        vectorstores=vectorstore.embeddings(uploaded_file,chunks)
+                        vectorstores=vectorstore.embeddings(chunks)
                         
                         st.session_state.conversation = get_conversation_chain(vectorstores)
                         
@@ -37,7 +46,8 @@ def pdfbot():
         if st.session_state.done:
             user_question = st.chat_input("Ask Question about your files.")
             if user_question:
-                handel_userinput(user_question)
+                with st.spinner("Thinking..."):
+                    handel_userinput(user_question)
             
                 
     else:
