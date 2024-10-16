@@ -24,10 +24,9 @@ class VectorStore:
             knowledge_base = FAISS.from_texts(text_chunks,embeddings)
                 
 
-            except EOFError as e:
+        except EOFError as e:
                 st.error("Issue with your file.")
-            else:
-                st.info("Vector stored")
+        
                 
     
         return knowledge_base
