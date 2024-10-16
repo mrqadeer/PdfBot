@@ -1,4 +1,4 @@
-
+langchain-community
 HTMLParser==0.0.2
 keyring==23.13.1
 langchain==0.2.0
